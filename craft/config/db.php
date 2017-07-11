@@ -13,7 +13,7 @@ return array(
 	'server' => 'localhost',
 
 	// The name of the database to select.
-	'database' => 'oak',
+	'database' => 'satyakitchen',
 
 	// The database username to connect with.
 	'user' => 'root',
@@ -22,6 +22,6 @@ return array(
 	'password' => 'root',
 
 	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'oak',
+	'tablePrefix' => 'sk',
 
 );
