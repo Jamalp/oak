@@ -30,4 +30,5 @@ return array(
 	// Dev Mode (see https://craftcms.com/support/dev-mode)
 	'devMode' => true,
 
+
 );

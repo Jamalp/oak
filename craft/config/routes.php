@@ -18,6 +18,6 @@
  * the blog/_archive template, providing it a ‘year’ variable set to the value “2012”.
  */
 
-return array(
-
-);
+ return array(
+   (?!api\/).*' => 'index
+ );
