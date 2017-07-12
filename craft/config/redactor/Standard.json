@@ -1,5 +1,6 @@
 {
 	"buttons": ["format","bold","italic","lists","link","file", "image", "video","horizontalrule"],
 	"plugins": ["source","fullscreen", "video"],
-	"formatting": ["p", "blockquote", "h2", "h3", "h4"]
+	"formatting": ["p", "blockquote", "h2", "h3", "h4"],
+	"imageTag" : "div"
 }
