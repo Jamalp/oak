@@ -19,5 +19,5 @@
  */
 
  return array(
-   (?!api\/).*' => 'index
+     '(?!api\/).*' => 'index'
  );
