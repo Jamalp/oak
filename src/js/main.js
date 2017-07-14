@@ -12,12 +12,7 @@ const router = new VueRouter({
   routes,
 });
 
-Vue.component('site-header', {
-  template:  '#site-header',
-});
-
-
-new Vue({
+const app = new Vue({
   router,
   el: '#app',
   render: h => h(App),

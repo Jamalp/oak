@@ -29,20 +29,18 @@ return [
               foreach ($linkList->linkEntry as $linkEntry) {
                 $linksEntry[] = [
                   'title' => $linkEntry->title,
-                  'url' => $linkEntry->url,
+                  'slug' => $linkEntry->slug,
                 ];
               }
               foreach ($linkList->linkCategory as $linkCategory) {
                 $linksCategory[] = [
                   'title' => $linkCategory->title,
-                  'url' => $linkCategory->url,
+                  'slug' => $linkCategory->slug,
                 ];
               }
               $links[] = [
                 'linkText' => $linkList->linkText,
                 'linkUrl' => $linkList->linkUrl,
-                'linkCategory' => $linkList->linkCategory->slug,
-
                 'linkEntry' => $linksEntry,
                 'linkCategory' => $linksCategory,
               ];
@@ -53,18 +51,61 @@ return [
           },
           'jsonOptions' => JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,
         ],
-        '<entryId:\d+>.json' => function($entryId) {
+        'api/blog/<entryId:\d+>.json' => function($entryId) {
             return [
                 'elementType' => ElementType::Entry,
                 'criteria' => ['id' => $entryId],
                 'first' => true,
                 'transformer' => function(EntryModel $entry) {
+                    $postBlocks = [];
+                    foreach ( $entry->post as $post ) {
+                      switch ( $post->type->handle ) {
+                        case 'image' :
+                          if ($post->fullBleedImage->first()) {
+                            $image = $post->fullBleedImage->first();
+                            $postBlocks[] = [
+                              'fullBleedImage' => $image->getUrl()
+                            ];
+                          } else if ($post->singleImage->first()) {
+                            $postBlocks[] = [
+                              'singleImage' => $post->singleImage->first()->getUrl()
+                            ];
+                          } else if ( $post->imageRow->first() ) {
+                            $imageRowArray = [];
+
+                            foreach ( $post->imageRow as $image ) {
+                              $imageRowArray[] = [
+                                $image->getUrl()
+                              ];
+                            }
+                            $postBlocks[] = [
+                              'imageRow' => $imageRowArray
+                            ];
+                          }
+                          break;
+                        case 'paragraph' :
+                          $postBlocks[] = [
+                            'paragraph' => $post->paragraph->getParsedContent()
+                          ];
+                          break;
+                        case 'paragraph_image' :
+
+                          break;
+                        case 'recipe' :
+
+                          break;
+                      }
+                    }
                     return [
                         'title' => $entry->title,
-                        'url' => $entry->url,
-                        'body' => $entry->post,
+                        'id' => $entry->id,
+                        'heroImage' => $entry->heroImage->first()->getUrl(),
+                        'subtitle' => $entry->subtitle,
+                        'contentTitle' => $entry->contentTitle,
+                        'body' => $postBlocks
                     ];
                 },
+                'jsonOptions' => JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,
             ];
         },
     ]
