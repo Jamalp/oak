@@ -8,8 +8,8 @@
         </ul>
       </nav>
     </header>
-    <!-- <router-link to="/" exact>Home</router-link> -->
-    <!-- <router-link to="/blog" exact>Blog</router-link> -->
+    <router-link to="/" exact>Home</router-link>
+    <router-link to="/blog" exact>Blog</router-link>
     <router-view></router-view>
   </div>
 </template>

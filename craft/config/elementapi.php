@@ -7,13 +7,20 @@ return [
             'elementType' => ElementType::Entry,
             'criteria' => ['section' => 'blog'],
             'transformer' => function(EntryModel $entry) {
+                $images = [];
+                foreach ($entry->heroImage as $image) {
+                  $images[] = $image->getUrl('tileThumb');
+                }
                 return [
                     'title' => $entry->title,
-                    'url' => $entry->url,
-                    'jsonUrl' => UrlHelper::getUrl("blog/{$entry->id}.json"),
-                    'summary' => $entry->summary,
+                    'id' => $entry->id,
+                    'jsonUrl' => UrlHelper::getUrl("api/blog/{$entry->id}.json"),
+                    'image' => $images,
+                    'slug' => $entry->slug,
                 ];
             },
+            // 'cache' => 'PT10M',
+            'jsonOptions' => JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,
         ],
         'api/header.json' => [
           'elementType' => ElementType::Entry,
@@ -89,10 +96,19 @@ return [
                           ];
                           break;
                         case 'paragraph_image' :
-
+                          $postBlocks[] = [
+                            'paragraph' => $post->paragraph->getParsedContent()
+                          ];
                           break;
                         case 'recipe' :
-
+                            $recipe = [
+                              'instructions' => $post->recipeSummary->getParsedContent(),
+                              'ingredients' => $post->ingredients->getParsedContent(),
+                              'image' => $post->recipeImage->first()->getUrl()
+                            ];
+                            $postBlocks[] = [
+                              'recipe' => $recipe
+                            ];
                           break;
                       }
                     }
@@ -105,6 +121,7 @@ return [
                         'body' => $postBlocks
                     ];
                 },
+                // 'cache' => 'PT7D',
                 'jsonOptions' => JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,
             ];
         },

@@ -1,0 +1,49 @@
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {box-sizing: inherit;}
+*:focus {outline: 0;}
+
+::selection {
+	// background: #505866;
+	// color:$white;
+	/* WebKit/Blink Browsers */
+}
+::-moz-selection {
+	// background: #505866;
+	// color:$white;
+	/* Gecko Browsers */
+}
+
+html,body {
+	height: 100%;
+}
+
+body {
+	text-rendering: optimizeLegibility !important;
+	margin:0 auto;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	outline:0;
+	width:100%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+ol,ul {
+	list-style-position:inside;
+}
+
+// Crispy Text
+h1, h2, h3, h4, h5, h6, p,label, a {
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-weight: normal;
+	font-family:inherit;
+}
+h1, h2, h3, h4, p, li, span {
+	-webkit-font-smoothing: antialiased !important;
+}
