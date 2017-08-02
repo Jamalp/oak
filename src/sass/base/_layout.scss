@@ -5,3 +5,8 @@
 .page-container {
   max-width:1700px;
 }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}

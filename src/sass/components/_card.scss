@@ -1,0 +1,122 @@
+.card {
+  position:relative;
+  display: block;
+  .category {
+    position: absolute;
+    top:12px;
+    right:12px;
+    letter-spacing: 1px;
+    padding:10px 15px;
+
+    text-align:center;
+    text-transform: uppercase;
+
+    color:$white;
+
+    font-family: 'Helvetica', serif;
+    font-weight: 700;
+
+    -webkit-font-smoothing: antialiased !important;
+
+    &.color-purple {
+      background-color:$purple
+    }
+    &.color-teal {
+      background-color:$teal
+    }
+    &.color-tan {
+      background-color:$tan
+    }
+    &.color-red {
+      background-color:$red;
+    }
+    &.color-yellow {
+      background-color:$yellow;
+    }
+  }
+}
+
+.card-meta-inside {
+  display:flex;
+  align-items:flex-end;
+  padding-left:30px;
+  padding-bottom:30px;
+  &:hover {
+    .title:after {
+      width:100%;
+    }
+  }
+  & > .title {
+    font-family:'Helvetica', serif;
+    color:$white;
+    font-size:36px;
+    font-weight:700;
+    align-self:flex-end;
+    &:after {
+      content:'';
+      height:8px;
+      width:210px;
+      background-color:$white;
+      display: block;
+      margin-top:15px;
+      transition:width 0.3s ease;
+    }
+  }
+}
+
+.card-meta-outside {
+  box-shadow: $box-shadow;
+
+  &:hover {
+    .copy:after {
+      width:100%;
+    }
+    .image {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .image {
+    display: block;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    overflow:hidden;
+    img {
+      transition: transform .3s ease;
+    }
+  }
+  .copy {
+    padding:20px 15px 30px;
+    background-color:$white;
+    color:#404040;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    position:relative;
+    &:after {
+      content:'';
+      width:0;
+      height:4px;
+      display: block;
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      background: linear-gradient(to right, #2657eb, #de6161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      opacity:.6;
+      transition: width .3s ease;
+    }
+    h4 {
+      font-size:28px;
+      line-height:1.2;
+      margin-bottom:17px;
+    }
+    p {
+      margin-bottom:17px;
+    }
+    date {
+      font-size:10px;
+      text-transform:uppercase;
+    }
+  }
+}
