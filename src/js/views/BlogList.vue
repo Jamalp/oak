@@ -37,8 +37,9 @@ export default {
   methods: {
     getEntries() {
       let vm = this;
+    
 
-      axios.get('api/blog.json')
+      axios.get('/api/blog.json')
            .then(response => {
              this.posts = response.data.data
            });

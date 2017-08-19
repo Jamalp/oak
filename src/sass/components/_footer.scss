@@ -1,0 +1,50 @@
+.page-home {
+  .footer {
+    background:linear-gradient(to bottom, #DBE6F6, #acb6e5);
+  }
+}
+
+.footer {
+  padding:80px 120px;
+  background:linear-gradient(to left top, #DBE6F6, #acb6e5, #74ebd5);
+  color:#fff;
+  .inner {
+    display:flex;
+  }
+  .left {
+    width:33.33%;
+    .logo {
+      width:50%;
+      margin: 0 auto;
+    }
+    .social {
+      margin-top:20px;
+      ul {
+        display:flex;
+        justify-content: center;
+        margin: 0 -12px;
+        li {
+          margin:0 12px;
+        }
+      }
+    }
+  }
+  .right {
+    width:66.66%;
+    display:flex;
+    .column {
+      display:flex;
+      flex-direction:column;
+      margin-right:80px;
+      h3 {
+        font-size:26px;
+        font-weight:700;
+        margin-bottom:15px;
+      }
+      li {
+        margin-bottom:8px;
+      }
+    }
+
+  }
+}

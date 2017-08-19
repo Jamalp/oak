@@ -1,4 +1,16 @@
 p {
   font-size:1rem;
   line-height:1.5rem;
+  font-family:'Lora';
+}
+
+.underline {
+  &:after {
+    display: block;
+    width: 25px;
+    height: 4px;
+    margin-top: 12px;
+    content: '';
+    background-color: #fff;
+  }
 }

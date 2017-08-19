@@ -89,10 +89,12 @@ return [
           },
           'jsonOptions' => JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,
         ], // end header
-        'api/blog/<entryId:\d+>.json' => function($entryId) {
+        'api/blog/<slug:{slug}>.json' => function($slug) {
             return [
                 'elementType' => ElementType::Entry,
-                'criteria' => ['id' => $entryId],
+                'criteria' => [
+                  'slug' => $slug
+                ],
                 'first' => true,
                 'transformer' => function(EntryModel $entry) {
                     $postBlocks = [];
@@ -102,7 +104,7 @@ return [
                           if ($post->fullBleedImage->first()) {
                             $image = $post->fullBleedImage->first();
                             $postBlocks[] = [
-                              'fullBleedImage' => $image->getUrl()
+                              'fullBleedImage' => $image->getUrl() 
                             ];
                           } else if ($post->singleImage->first()) {
                             $postBlocks[] = [

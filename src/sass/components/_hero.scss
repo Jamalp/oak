@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center center;
   .overlay {
     position:absolute;
     top: 0;
@@ -28,4 +31,17 @@
     font-style: italic;
     font-weight: 300;
   }
+}
+// Blog Post hero
+.blog-post {
+  .hero {
+    height:calc(100vh - 60px);
+  }
+  .hero-copy {
+    width:75%;
+    h1 {
+      font-size:120px;
+    }
+  }
+
 }

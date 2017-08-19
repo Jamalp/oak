@@ -4,9 +4,27 @@
 
 .page-container {
   max-width:1700px;
+  margin: 0 auto;
+  @media (min-width:1700px) {
+    padding-left:0;
+    padding-right:0;
+  }
 }
 
 .row {
   display: flex;
   justify-content: space-between;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .4s;
+}
+
+.fade-enter-active {
+  transition-delay: .25s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
